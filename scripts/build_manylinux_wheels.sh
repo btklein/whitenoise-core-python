@@ -35,8 +35,9 @@ pip install -r /io/requirements/base.txt
 
 #python ../setup.py sdist -d /io/wheelhouse
 python /io/scripts/code_generation.py
-python /io/setup.py bdist_wheel -d /io/wheelhouse
+python /io/setup.py bdist_wheel -d /io/wheelhouse-manylinux
 
-for whl in /io/wheelhouse/*.whl; do
-	auditwheel repair "$whl" --plat $PLAT -w /io/wheelhouse/;
-done;
+for whl in ./io/wheelhouse-manylinux/*.whl; do
+  echo test
+	auditwheel repair "$whl" --plat $PLAT -w /io/wheelhouse/
+done
